@@ -1,5 +1,5 @@
 import typer
-import utils
+from project_cli import utils
 
 app = typer.Typer()
 
@@ -18,7 +18,3 @@ def generate(semantic: str, package_name: str):
     Generate folders and files
     """
     utils.generate_file(semantic, package_name)
-
-
-if __name__ == "__main__":
-    app()
