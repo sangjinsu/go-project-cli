@@ -26,18 +26,27 @@ class Semantic:
 
 
 def generate_file(semantic: str, package_name: str, path: str = ''):
-    folder_name = Semantic(semantic).folder_name
+    sem = Semantic(semantic)
+    folder_name = sem.folder_name
+    file_name = sem.file_name
     if folder_name is None:
         print(f'semantic {semantic} not found')
         exit(code=0)
 
     try:
         # Create the folder if it doesn't exist
-        os.makedirs(os.path.join(path, folder_name), exist_ok=True)
+        folder_name = os.path.join(path, folder_name)
+        dir_exists = os.path.exists(folder_name)
+        if dir_exists:
+            print('Nothing to be done.')
+            exit(0)
+        os.makedirs(folder_name, exist_ok=True)
 
         # Create the Golang file with the same name as the folder
-        go_file_name = os.path.join(path, folder_name, folder_name + ".go")
-        go_code = f'package {package_name}'
+        go_file_name = os.path.join(folder_name, file_name + ".go")
+
+        with open('projectcli/examples/example', 'r') as example_file:
+            go_code = example_file.read().format(package_name=package_name)
 
         with open(go_file_name, 'w') as go_file:
             go_file.write(go_code)
