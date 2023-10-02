@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "project-cli"
-version = "0.1.0"
+name = "go-project-cli"
+version = "0.2.6"
 description = ""
 authors = ["sangjinsu <climbplant39@kakao.com>"]
 license = "MIT License"
 readme = "README.md"
 
 [tool.poetry.scripts]
-project-cli = "project_cli.main:app"
+projectcli = "go_project_cli.main:app"
 
 
 [tool.poetry.dependencies]

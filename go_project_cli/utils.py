@@ -1,5 +1,6 @@
 import os
 from rich import print
+from go_project_cli.examples.example import example_file_txt
 
 
 class Semantic:
@@ -45,8 +46,7 @@ def generate_file(semantic: str, package_name: str, path: str = ''):
         # Create the Golang file with the same name as the folder
         go_file_name = os.path.join(folder_name, file_name + ".go")
 
-        with open('project_cli/examples/example', 'r') as example_file:
-            go_code = example_file.read().format(package_name=package_name)
+        go_code = example_file_txt.format(package_name=package_name)
 
         with open(go_file_name, 'w') as go_file:
             go_file.write(go_code)
