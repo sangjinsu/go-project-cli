@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "project-cli"
+version = "0.1.0"
+description = ""
+authors = ["sangjinsu <climbplant39@kakao.com>"]
+license = "MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = {extras = ["all"], version = "^0.9.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
