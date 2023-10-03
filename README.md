@@ -28,7 +28,7 @@ Golang Project Folder and File Creation CLI
           └── model.go
   ```
 
-# generate
+## generate
 
 - create semantic folders and files such as controllers, services, and models
 - projectcli generate [schematic] [package name]
