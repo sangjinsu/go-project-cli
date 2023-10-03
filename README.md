@@ -4,6 +4,11 @@ Golang Project Folder and File Creation CLI
 
 ---
 
+# Install
+```bash
+pip install go-project-cli
+```
+
 # Command
 
 ## new
