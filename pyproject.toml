@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "go-project-cli"
-version = "0.2.6"
+version = "0.3.0"
 description = ""
 authors = ["sangjinsu <climbplant39@kakao.com>"]
 license = "MIT License"
