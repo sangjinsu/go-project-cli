@@ -19,13 +19,13 @@ Golang Project Folder and File Creation CLI
     .
     └── package_name/
       ├── controllers/
-      │   └── controllers.go
+      │   └── controller.go
       ├── services/
-      │   └── services.go
+      │   └── service.go
       ├── repositories/
-      │   └── repositories.go
+      │   └── repository.go
       └── models/
-          └── models.go
+          └── model.go
   ```
 
 # generate
@@ -37,7 +37,7 @@ Golang Project Folder and File Creation CLI
       ```text
         .
         └── controllers/
-          └── controllers.go
+          └── controller.go
       ```
 
 ### semantics

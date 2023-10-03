@@ -1,4 +1,5 @@
 import os
+import typer
 from rich import print
 from go_project_cli.examples.example import example_file_txt
 
@@ -17,7 +18,8 @@ class Semantic:
             m='models'
         )
         self.folder_name = semantics.get(semantic)
-        self.file_name = semantics.get(semantic)
+        self.file_name = semantics.get(semantic)[:-1] \
+            if not (semantic == 'r' or semantic == 'repository') else 'repository'
 
     def get_folder_name(self) -> str | None:
         return self.folder_name
@@ -27,12 +29,13 @@ class Semantic:
 
 
 def generate_file(semantic: str, package_name: str, path: str = ''):
+    if semantic not in ['controller', 'co', 'service', 's', 'repository', 'r', 'model', 'm']:
+        print(f'semantic {semantic} not found')
+        raise typer.Exit(1)
+
     sem = Semantic(semantic)
     folder_name = sem.folder_name
     file_name = sem.file_name
-    if folder_name is None:
-        print(f'semantic {semantic} not found')
-        exit(code=0)
 
     try:
         # Create the folder if it doesn't exist
@@ -40,7 +43,7 @@ def generate_file(semantic: str, package_name: str, path: str = ''):
         dir_exists = os.path.exists(folder_name)
         if dir_exists:
             print('Nothing to be done.')
-            exit(0)
+            raise typer.Exit(1)
         os.makedirs(folder_name, exist_ok=True)
 
         # Create the Golang file with the same name as the folder
@@ -54,6 +57,7 @@ def generate_file(semantic: str, package_name: str, path: str = ''):
         print(f"Golang folder '{folder_name}' and file '{go_file_name}' created successfully.")
     except Exception as e:
         print(f"Error: {e}")
+        raise typer.Exit(1)
 
 
 def new_package(package_name):
@@ -64,3 +68,4 @@ def new_package(package_name):
             generate_file(semantic, package_name, package_name)
     except Exception as e:
         print(f"Error: {e}")
+        raise typer.Exit(1)
